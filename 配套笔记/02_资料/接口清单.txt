@@ -1,0 +1,56 @@
+一、登录接口
+	1.1 请求登陆接口
+		请求
+			1). 请求url:http://ttapi.research.itcast.cn/app/v1_0/authorizations
+			2). 请求方法：post
+			3). 请求参数：Headers = {"Content-Type": "application/json	"}
+			4). 请求报文：
+				{"mobile": "18600000000","code": 888888}
+		响应
+			1). 状态码：201
+			2). 响应数据
+				{"message":"xxx"}
+
+	1.2 获取短信验证码：
+		1). 请求url：http://ttapi.research.itcast.cn/app/v1_0/sms/codes/:mobile
+		    （mobile:手机号）
+		2). 状态码：200
+		3). 请求方法：GET
+
+	提示：
+		1. 验证码发送成功后，在手机中查找。
+		2. 手机验证1分钟之内只能接受1次。
+二、获取用户频道列表
+	2.1 请求：
+		1). 请求url：http://ttapi.research.itcast.cn/app/v1_0/user/channels
+		2). 请求方法：GET
+		3). 请求参数：Headers = {"Content-Type":"application/json",
+					"Authorization":"Bearer token信息"}
+		提示：默认token有效期为2小时。
+	2.2 响应：
+		1). 响应状态码：200
+		2). 响应数据：{"message":"xxx"}
+三、收藏文章
+	3.1 请求
+		1). 请求url地址：http://ttapi.research.itcast.cn/app/v1_0/article/collections
+		2). 请求方法：post
+		3). 请求参数:
+			Headers = {"Content-Type":"application/json",
+					"Authorization":"Bearer token信息"}
+
+		4). 请求报文
+			{"target":文章id}
+	3.2 响应
+		1). 响应状态码：201
+		2). 响应数据：{"message":"xxx"}
+
+四、取消收藏文章
+	4.1 请求
+		1). 请求url：http://ttapi.research.itcast.cn/app/v1_0/article/collections/:target
+		(:target为文章id)
+		2). 请求参数：
+			Headers = {"Content-Type":"application/x-www-form-urlencoded",
+					"Authorization":"Bearer token信息"}
+		3). 请求方法：DELETE
+	4.2 响应
+		1). 204
